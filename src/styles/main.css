@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.home-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.top-right-menu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  left: auto;
+  display: flex;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.top-right-menu a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+}
+
+.center-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.center-banner > a,
+.shopall-title {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 20px 30px;
+  font-size: 20px;
+  background-color: white;
+}
+
+.shopall-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: white;
+  border: 1px solid black;
+}
+
+/* 1단 메뉴 */
+.dropdown-menu > a,
+.dropdown-item > a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+/* 2단 부모 */
+.dropdown-item {
+  position: relative;
+}
+
+/* 2단 메뉴 */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  min-width: 180px;
+  background: white;
+  border: 1px solid black;
+}
+
+.submenu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+/* hover 작동 */
+.shopall-menu:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item:hover .submenu {
+  display: block;
+}
+.best-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.best-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  background: white;
+  border: 1px solid black;
+}
+
+.best-dropdown a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+.best-dropdown a:last-child {
+  border-bottom: none;
+}
+
+/* hover */
+.best-menu:hover .best-dropdown {
+  display: block;
+}
+
+/* Best 박스 스타일 */
+.best-title {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 20px 30px;
+  font-size: 20px;
+  background: white;
+}
