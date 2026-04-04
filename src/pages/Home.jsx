@@ -34,7 +34,13 @@ function Home() {
                 <Link to="/shop-all/clothing/outers">Outers</Link>
                 <Link to="/shop-all/clothing/tees">Tees</Link>
                 <Link to="/shop-all/clothing/tops">Tops</Link>
+                <Link to="/shop-all/clothing/bloeros">Boleros</Link>
+                <Link to="/shop-all/clothing/knits">Knits</Link>
+                <Link to="/shop-all/clothing/dresses">Dresses</Link>
                 <Link to="/shop-all/clothing/pants">Pants</Link>
+                <Link to="/shop-all/clothing/skirts">Skirts</Link>
+                <Link to="/shop-all/clothing/sets">Sets</Link>
+                <Link to="/shop-all/clothing/swimwear">Swimwear</Link>
               </div>
             </div>
 
