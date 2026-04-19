@@ -1,0 +1,68 @@
+.login-page {
+  background-color: white;
+  min-height: 100vh;
+}
+
+.login-content {
+  padding-top: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.login-container {
+  width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.login-container h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 0 40px 0;
+}
+
+.login-container input {
+  width: 100%;
+  height: 56px;
+  box-sizing: border-box;
+  padding: 0 18px;
+  margin-bottom: 12px;
+  border: 1px solid #e5e5e5;
+  background-color: white;
+  font-family: "Pretendard", sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.login-container input::placeholder {
+  color: #b8b8b8;
+}
+
+.forgot {
+  margin: 4px 0 32px 0;
+  font-family: "Pretendard", sans-serif;
+  font-size: 13px;
+  color: #9d9d9d;
+}
+
+.login-btn {
+  width: 100%;
+  height: 56px;
+  border: none;
+  background-color: #e9e0e3;
+  font-family: "Pretendard", sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.signup-link {
+  margin-top: 18px;
+  text-align: center;
+  font-family: "Pretendard", sans-serif;
+  font-size: 13px;
+  color: #9d9d9d;
+  text-decoration: underline;
+}
