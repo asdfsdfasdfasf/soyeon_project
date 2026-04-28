@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import TopNotice from "../components/TopNotice";
 import "../styles/main.css";
 import "../styles/login.css";
 
 function Login() {
   return (
     <div className="login-page">
+      <TopNotice />
       <Header />
 
       <div className="login-content">

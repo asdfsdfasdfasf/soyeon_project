@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 import "../styles/main.css";
 import { FiSearch, FiUser, FiHeart, FiShoppingBag } from "react-icons/fi";
+import { useState } from "react";
+import SearchBar from "./SearchBar";
 
 function Home() {
+  const [searchOpen, setSearchOpen] = useState(false);
+
   return (
     <div className="home-page">
-
-      {/* 상단 안내 */}
-      <div className="top-notice">
-        첫 주문시 WELCOME10 코드를 사용하여 10% 할인을 받아보세요.
-      </div>
 
       {/* 헤더 */}
       <header className="main-header">
@@ -46,7 +45,13 @@ function Home() {
           <Link to="/shop-all/clothing/outers">outers</Link>
           <Link to="/shop-all/clothing/tees">tees</Link>
           <Link to="/shop-all/clothing/tops">tops</Link>
+          <Link to="/shop-all/clothing/boleros">boleros</Link>
+          <Link to="/shop-all/clothing/knits">knits</Link>
+          <Link to="/shop-all/clothing/dresses">dresses</Link>
           <Link to="/shop-all/clothing/pants">pants</Link>
+          <Link to="/shop-all/clothing/skirts">skirts</Link>
+          <Link to="/shop-all/clothing/sets">sets</Link>
+          <Link to="/shop-all/clothing/swimwear">swimwear</Link>
         </div>
       </div>
 
@@ -76,13 +81,17 @@ function Home() {
 </nav>
   {/* 오른쪽 메뉴 */}
        <div className="header-icons">
-        <Link to="/search"><FiSearch /></Link>
+        <button className="search-open-button" onClick={() => setSearchOpen(true)}>
+        <FiSearch />
+        </button>
         <Link to="/login"><FiUser /></Link>
         <Link to="/wishlist"><FiHeart /></Link>
         <Link to="/cart"><FiShoppingBag /></Link>
       </div>
 
       </header>
+
+      <SearchBar open={searchOpen} setOpen={setSearchOpen} />
 
     </div>
   );

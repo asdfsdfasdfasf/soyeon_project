@@ -1,70 +1,43 @@
 import { useParams, Link } from "react-router-dom";
+import Header from "../components/Header";
+import ProductList from "../components/ProductList";
+import TopNotice from "../components/TopNotice";
+import "../styles/main.css";
 
 function Category() {
   const { category, sub } = useParams();
 
+  const currentTitle = sub || category || "shop all";
+
   return (
     <div>
-      <h1>Shop All Page</h1>
+      <TopNotice />
+      <Header />
 
-      {!category && (
-        <div>
-          <h2>Main Categories</h2>
-          <ul>
-            <li><Link to="clothing">Clothing</Link></li>
-            <li><Link to="bags">Bags</Link></li>
-            <li><Link to="shoes">Shoes</Link></li>
-            <li><Link to="home">Home</Link></li>
-            <li><Link to="accessories">Accessories</Link></li>
-          </ul>
+      <main className="category-page">
+        <div className="breadcrumb">
+          <Link to="/shop-all">SHOP ALL</Link>
+          {category && <span>&gt;</span>}
+          {category && <strong>{currentTitle}</strong>}
         </div>
-      )}
 
-      {category === "clothing" && !sub && (
-        <div>
-          <h2>Clothing</h2>
-          <ul>
-            <li><Link to="outers">Outers</Link></li>
-            <li><Link to="tees">Tees</Link></li>
-            <li><Link to="tops">Tops</Link></li>
-            <li><Link to="boleros">Boleros</Link></li>
-            <li><Link to="knits">Knits</Link></li>
-            <li><Link to="Dresses">Dresses</Link></li>
-            <li><Link to="pants">Pants</Link></li>
-            <li><Link to="skirts">Skirts</Link></li>
-            <li><Link to="sets">Sets</Link></li>
-            <li><Link to="swimwear">Swimwear</Link></li>
-          </ul>
-        </div>
-      )}
+        {!sub && category === "clothing" && (
+          <div className="sub-category-list">
+            <Link to="outers">Outers</Link>
+            <Link to="tees">Tees</Link>
+            <Link to="tops">Tops</Link>
+            <Link to="boleros">Boleros</Link>
+            <Link to="knits">Knits</Link>
+            <Link to="dresses">Dresses</Link>
+            <Link to="pants">Pants</Link>
+            <Link to="skirts">Skirts</Link>
+            <Link to="sets">Sets</Link>
+            <Link to="swimwear">Swimwear</Link>
+          </div>
+        )}
 
-      {category === "home" && !sub && (
-        <div>
-          <h2>Home</h2>
-          <ul>
-            <li><Link to="bras">Bras</Link></li>
-            <li><Link to="underwear">Underwear</Link></li>
-            <li><Link to="tops">Tops</Link></li>
-            <li><Link to="bottoms">Bottoms</Link></li>
-            <li><Link to="acc">Acc</Link></li>
-          </ul>
-        </div>
-      )}
-
-      {category === "accessories" && !sub && (
-        <div>
-          <h2>Accessories</h2>
-          <ul>
-            <li><Link to="jewelry">Jewelry</Link></li>
-            <li><Link to="socks">Socks</Link></li>
-            <li><Link to="leather-acc">Leather Acc.</Link></li>
-            <li><Link to="iphone-cases">iPhone Cases</Link></li>
-          </ul>
-        </div>
-      )}
-
-      <br />
-      <Link to="/">Back to Home</Link>
+        <ProductList filter={sub || category} />
+      </main>
     </div>
   );
 }
