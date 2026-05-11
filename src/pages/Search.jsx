@@ -1,12 +1,28 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import SearchBar from "../components/SearchBar";
+import ProductList from "../components/ProductList";
 
-function Best() {
+function Search() {
+  const [searchKeyword, setSearchKeyword] = useState("");
+
   return (
-    <div>
-      <h1>Search Page</h1>
-      <Link to="/">Back to Home</Link>
-    </div>
+    <>
+      <SearchBar
+        onSearch={setSearchKeyword}
+        onClose={() => window.history.back()}
+      />
+
+      {searchKeyword && (
+        <div className="search-result-area">
+          <p className="search-result-text">
+            "{searchKeyword}" 검색 결과
+          </p>
+
+          <ProductList searchKeyword={searchKeyword} />
+        </div>
+      )}
+    </>
   );
 }
 
-export default Best;
+export default Search;

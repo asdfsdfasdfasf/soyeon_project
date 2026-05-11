@@ -1,0 +1,14 @@
+{
+  "wishlist": [
+    {
+      "id": 1,
+      "name": "outer",
+      "price": "₩00,000",
+      "category": "outers",
+      "group": [
+        "new",
+        "best-sellers"
+      ]
+    }
+  ]
+}
