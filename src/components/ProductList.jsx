@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { FiHeart, FiShoppingBag } from "react-icons/fi";
 import { FaHeart } from "react-icons/fa";
 import { WishlistContext } from "../context/wishlist-context";
@@ -53,28 +54,35 @@ function ProductList({ filter }) {
     <div className="product-grid">
       {filteredProducts.map((product) => (
         <div className="product-card" key={product.id}>
-          <div className="product-image-frame">
-            <button
-              type="button"
-              className="heart-button"
-              onClick={() => toggleWishlist(product)}
-            >
-              {isWishlisted(product.id) ? (
-                <FaHeart />
-              ) : (
-                <FiHeart />
-              )}
-            </button>
 
-            <button className="bag-button">
-              <FiShoppingBag />
-            </button>
-          </div>
+          <Link
+            to={`/product/${product.id}`}
+            className="product-link"
+          >
+            <div className="product-image-frame"></div>
 
-          <div className="product-info">
-            <p>{product.name}</p>
-            <p>{product.price}</p>
-          </div>
+            <div className="product-info">
+              <p>{product.name}</p>
+              <p>{product.price}</p>
+            </div>
+          </Link>
+
+          <button
+            type="button"
+            className="heart-button"
+            onClick={() => toggleWishlist(product)}
+          >
+            {isWishlisted(product.id) ? (
+              <FaHeart />
+            ) : (
+              <FiHeart />
+            )}
+          </button>
+
+          <button className="bag-button">
+            <FiShoppingBag />
+          </button>
+
         </div>
       ))}
     </div>

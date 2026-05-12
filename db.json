@@ -1,12 +1,20 @@
 {
   "wishlist": [
     {
-      "id": 1,
-      "name": "outer",
+      "id": 3,
+      "name": "top",
       "price": "₩00,000",
-      "category": "outers",
+      "category": "tops",
       "group": [
-        "new",
+        "new"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "tee",
+      "price": "₩00,000",
+      "category": "tees",
+      "group": [
         "best-sellers"
       ]
     }

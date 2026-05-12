@@ -1,13 +1,20 @@
-function ProductCard() {
+import { Link } from "react-router-dom";
+import { FiHeart, FiShoppingBag } from "react-icons/fi";
+
+function ProductCard({ product }) {
   return (
     <div className="product-card">
-      <img
-        src="https://via.placeholder.com/200"
-        alt="상품 이미지"
-      />
-      <h3>기본 상품</h3>
-      <p>가격: 10,000원</p>
-      <button>장바구니 담기</button>
+      <Link to={`/product/${product.id}`} className="product-link">
+        <div className="product-image-box">
+          <img src={product.image} alt={product.name} />
+
+          <FiHeart className="product-heart" />
+          <FiShoppingBag className="product-bag" />
+        </div>
+
+        <p className="product-name">{product.name}</p>
+        <p className="product-price">{product.price}</p>
+      </Link>
     </div>
   );
 }
