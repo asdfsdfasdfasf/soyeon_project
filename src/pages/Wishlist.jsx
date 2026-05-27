@@ -29,7 +29,6 @@ function Wishlist() {
     }
 
     const cartItem = {
-      id: `cart-${product.productId}-${size}-${Date.now()}`,
       productId: Number(product.productId),
       userId: loginUser ? Number(loginUser.id) : null,
       name: String(product.name),
@@ -55,7 +54,7 @@ function Wishlist() {
         newGuestCart = guestCart.map((item) =>
           Number(item.productId) === Number(product.productId) &&
           item.size === size
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: Number(item.quantity) + 1 }
             : item
         );
       } else {
@@ -63,6 +62,7 @@ function Wishlist() {
           ...guestCart,
           {
             ...cartItem,
+            id: `guest-cart-${product.productId}-${size}-${Date.now()}`,
           },
         ];
       }
@@ -79,13 +79,35 @@ function Wishlist() {
       return;
     }
 
-    await fetch("http://localhost:3001/cart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(cartItem),
-    });
+    const cartResponse = await fetch(
+      `http://localhost:3001/cart?userId=${Number(
+        loginUser.id
+      )}&productId=${Number(product.productId)}&size=${size}`
+    );
+
+    const cartData = await cartResponse.json();
+
+    if (cartData.length > 0) {
+      const sameItem = cartData[0];
+
+      await fetch(`http://localhost:3001/cart/${sameItem.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          quantity: Number(sameItem.quantity) + 1,
+        }),
+      });
+    } else {
+      await fetch("http://localhost:3001/cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cartItem),
+      });
+    }
 
     window.dispatchEvent(new Event("cartUpdated"));
 
@@ -160,7 +182,9 @@ function Wishlist() {
                 className="wishlist-cart-button"
                 onClick={() => addCart(product)}
               >
-                {selectedSize[product.productId] ? "add to cart" : "select size"}
+                {selectedSize[product.productId]
+                  ? "add to cart"
+                  : "select size"}
               </button>
             </div>
           ))}

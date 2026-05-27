@@ -30,7 +30,9 @@ function WishlistProvider({ children }) {
       return;
     }
 
-    const response = await fetch(`${API_URL}?userId=${loginUser.id}`);
+    const response = await fetch(
+      `${API_URL}?userId=${Number(loginUser.id)}`
+    );
     const data = await response.json();
 
     setWishlist(data);
@@ -53,7 +55,7 @@ function WishlistProvider({ children }) {
     if (!loginUser) {
       const guestWishlist = getGuestWishlist();
 
-      const exists = guestWishlist.find(
+      const exists = guestWishlist.some(
         (item) => Number(item.productId) === productId
       );
 
@@ -72,7 +74,6 @@ function WishlistProvider({ children }) {
             price: product.price,
             category: product.category,
             group: product.group || [],
-            id: Date.now(),
           },
         ];
       }
@@ -82,32 +83,32 @@ function WishlistProvider({ children }) {
       return;
     }
 
-    const response = await fetch(
-      `${API_URL}?userId=${loginUser.id}&productId=${productId}`
+    const exists = wishlist.find(
+      (item) => Number(item.productId) === productId
     );
-
-    const data = await response.json();
-    const exists = data[0];
 
     if (exists) {
       await fetch(`${API_URL}/${exists.id}`, {
         method: "DELETE",
       });
 
-      await loadWishlist();
+      setWishlist((prev) =>
+        prev.filter((item) => Number(item.productId) !== productId)
+      );
+
       return;
     }
 
     const newWish = {
+      userId: Number(loginUser.id),
       productId,
-      userId: loginUser.id,
       name: product.name,
       price: product.price,
       category: product.category,
       group: product.group || [],
     };
 
-    await fetch(API_URL, {
+    const response = await fetch(API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -115,23 +116,16 @@ function WishlistProvider({ children }) {
       body: JSON.stringify(newWish),
     });
 
-    await loadWishlist();
+    const savedWish = await response.json();
+
+    setWishlist((prev) => [...prev, savedWish]);
   };
 
   const isWishlisted = (productId) => {
-    const loginUser = getLoginUser();
     const targetProductId = Number(productId);
 
-    if (!loginUser) {
-      return wishlist.some(
-        (item) => Number(item.productId) === targetProductId
-      );
-    }
-
     return wishlist.some(
-      (item) =>
-        Number(item.productId) === targetProductId &&
-        Number(item.userId) === Number(loginUser.id)
+      (item) => Number(item.productId) === targetProductId
     );
   };
 

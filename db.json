@@ -16,6 +16,19 @@
       "id": 2
     }
   ],
-  "cart": [],
-  "products": []
+  "cart": [
+    {
+      "id": "cart-2-L-1779869296079",
+      "productId": 2,
+      "userId": 1,
+      "name": "tee",
+      "price": "₩00,000",
+      "category": "tees",
+      "group": [
+        "best-sellers"
+      ],
+      "size": "L",
+      "quantity": 1
+    }
+  ]
 }
