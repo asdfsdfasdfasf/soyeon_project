@@ -82,42 +82,40 @@ function WishlistProvider({ children }) {
       return;
     }
 
-    const exists = wishlist.find(
-      (item) =>
-        Number(item.productId) === productId &&
-        Number(item.userId) === Number(loginUser.id)
+    const response = await fetch(
+      `${API_URL}?userId=${loginUser.id}&productId=${productId}`
     );
+
+    const data = await response.json();
+    const exists = data[0];
 
     if (exists) {
       await fetch(`${API_URL}/${exists.id}`, {
         method: "DELETE",
       });
 
-      setWishlist((prev) =>
-        prev.filter((item) => Number(item.productId) !== productId)
-      );
-    } else {
-      const newWish = {
-        productId,
-        userId: loginUser.id,
-        name: product.name,
-        price: product.price,
-        category: product.category,
-        group: product.group || [],
-      };
-
-      const response = await fetch(API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newWish),
-      });
-
-      const savedWish = await response.json();
-
-      setWishlist((prev) => [...prev, savedWish]);
+      await loadWishlist();
+      return;
     }
+
+    const newWish = {
+      productId,
+      userId: loginUser.id,
+      name: product.name,
+      price: product.price,
+      category: product.category,
+      group: product.group || [],
+    };
+
+    await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newWish),
+    });
+
+    await loadWishlist();
   };
 
   const isWishlisted = (productId) => {

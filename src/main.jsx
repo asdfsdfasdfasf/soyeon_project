@@ -6,11 +6,11 @@ import WishlistProvider from "./context/WishlistContext.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+
     <WishlistProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </WishlistProvider>
-  </React.StrictMode>
+  
 );

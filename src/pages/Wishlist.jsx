@@ -30,13 +30,13 @@ function Wishlist() {
 
     const cartItem = {
       id: `cart-${product.productId}-${size}-${Date.now()}`,
-      productId: product.productId,
-      userId: loginUser ? loginUser.id : null,
-      name: product.name,
-      price: product.price,
-      category: product.category,
-      group: product.group || [],
-      size,
+      productId: Number(product.productId),
+      userId: loginUser ? Number(loginUser.id) : null,
+      name: String(product.name),
+      price: String(product.price),
+      category: String(product.category),
+      group: [...(product.group || [])],
+      size: String(size),
       quantity: 1,
     };
 
@@ -45,7 +45,7 @@ function Wishlist() {
 
       const sameItem = guestCart.find(
         (item) =>
-          item.productId === product.productId &&
+          Number(item.productId) === Number(product.productId) &&
           item.size === size
       );
 
@@ -53,7 +53,7 @@ function Wishlist() {
 
       if (sameItem) {
         newGuestCart = guestCart.map((item) =>
-          item.productId === product.productId &&
+          Number(item.productId) === Number(product.productId) &&
           item.size === size
             ? { ...item, quantity: item.quantity + 1 }
             : item
@@ -63,7 +63,6 @@ function Wishlist() {
           ...guestCart,
           {
             ...cartItem,
-            id: Date.now(),
           },
         ];
       }
