@@ -35,39 +35,40 @@ function WishlistProvider({ children }) {
   useEffect(() => {
     loadWishlist();
 
-    const handleWishlistReload = () => {
-      loadWishlist();
-    };
-
-    window.addEventListener("wishlistReload", handleWishlistReload);
+    window.addEventListener("wishlistReload", loadWishlist);
 
     return () => {
-      window.removeEventListener("wishlistReload", handleWishlistReload);
+      window.removeEventListener("wishlistReload", loadWishlist);
     };
   }, []);
 
   const toggleWishlist = async (product) => {
     const loginUser = getLoginUser();
 
+    const productId = product.productId || product.id;
+
     if (!loginUser) {
       const guestWishlist = getGuestWishlist();
 
       const exists = guestWishlist.find(
-        (item) => item.productId === product.id
+        (item) => Number(item.productId) === Number(productId)
       );
 
       let newWishlist;
 
       if (exists) {
         newWishlist = guestWishlist.filter(
-          (item) => item.productId !== product.id
+          (item) => Number(item.productId) !== Number(productId)
         );
       } else {
         newWishlist = [
           ...guestWishlist,
           {
-            ...product,
-            productId: product.id,
+            productId: productId,
+            name: product.name,
+            price: product.price,
+            category: product.category,
+            group: product.group || [],
             id: Date.now(),
           },
         ];
@@ -80,8 +81,8 @@ function WishlistProvider({ children }) {
 
     const exists = wishlist.find(
       (item) =>
-        item.productId === product.id &&
-        item.userId === loginUser.id
+        Number(item.productId) === Number(productId) &&
+        Number(item.userId) === Number(loginUser.id)
     );
 
     if (exists) {
@@ -89,10 +90,12 @@ function WishlistProvider({ children }) {
         method: "DELETE",
       });
 
-      setWishlist(wishlist.filter((item) => item.id !== exists.id));
+      setWishlist((prev) =>
+        prev.filter((item) => item.id !== exists.id)
+      );
     } else {
       const newWish = {
-        productId: product.id,
+        productId: productId,
         userId: loginUser.id,
         name: product.name,
         price: product.price,
@@ -109,12 +112,25 @@ function WishlistProvider({ children }) {
       });
 
       const savedWish = await response.json();
-      setWishlist([...wishlist, savedWish]);
+
+      setWishlist((prev) => [...prev, savedWish]);
     }
   };
 
   const isWishlisted = (productId) => {
-    return wishlist.some((item) => item.productId === productId);
+    const loginUser = getLoginUser();
+
+    if (!loginUser) {
+      return wishlist.some(
+        (item) => Number(item.productId) === Number(productId)
+      );
+    }
+
+    return wishlist.some(
+      (item) =>
+        Number(item.productId) === Number(productId) &&
+        Number(item.userId) === Number(loginUser.id)
+    );
   };
 
   return (

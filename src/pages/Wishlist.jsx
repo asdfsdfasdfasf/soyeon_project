@@ -7,19 +7,24 @@ import { FaHeart } from "react-icons/fa";
 
 function Wishlist() {
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
-  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedSize, setSelectedSize] = useState({});
 
   const addCart = async (product) => {
-    if (!selectedSize) {
+    const size = selectedSize[product.productId];
+
+    if (!size) {
       alert("사이즈를 선택해주세요.");
       return;
     }
 
     const cartItem = {
-      ...product,
-      id: `${product.id}-${selectedSize}-${Date.now()}`,
-      productId: product.id,
-      size: selectedSize,
+      productId: product.productId,
+      userId: product.userId || null,
+      name: product.name,
+      price: product.price,
+      category: product.category,
+      group: product.group || [],
+      size,
       quantity: 1,
     };
 
@@ -31,8 +36,12 @@ function Wishlist() {
       body: JSON.stringify(cartItem),
     });
 
-    alert(`${selectedSize} 사이즈가 장바구니에 추가되었습니다.`);
-    setSelectedSize("");
+    alert(`${size} 사이즈가 장바구니에 추가되었습니다.`);
+
+    setSelectedSize({
+      ...selectedSize,
+      [product.productId]: "",
+    });
   };
 
   return (
@@ -46,8 +55,7 @@ function Wishlist() {
           <p>{wishlist.length} item</p>
 
           <p>
-            To save your wishlist please{" "}
-            <Link to="/login">login</Link> or{" "}
+            To save your wishlist please <Link to="/login">login</Link> or{" "}
             <Link to="/signup">sign up</Link>.
           </p>
         </div>
@@ -74,8 +82,13 @@ function Wishlist() {
 
               <select
                 className="wishlist-size-select"
-                value={selectedSize}
-                onChange={(e) => setSelectedSize(e.target.value)}
+                value={selectedSize[product.productId] || ""}
+                onChange={(e) =>
+                  setSelectedSize({
+                    ...selectedSize,
+                    [product.productId]: e.target.value,
+                  })
+                }
               >
                 <option value="">Select size</option>
                 <option value="S">S</option>
@@ -88,7 +101,7 @@ function Wishlist() {
                 className="wishlist-cart-button"
                 onClick={() => addCart(product)}
               >
-                {selectedSize ? "add to cart" : "select size"}
+                {selectedSize[product.productId] ? "add to cart" : "select size"}
               </button>
             </div>
           ))}
