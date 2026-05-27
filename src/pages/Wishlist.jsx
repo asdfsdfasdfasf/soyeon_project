@@ -38,11 +38,25 @@ function Wishlist() {
       body: JSON.stringify(cartItem),
     });
 
+    window.dispatchEvent(new Event("cartUpdated"));
+
     alert(`${size} 사이즈가 장바구니에 추가되었습니다.`);
 
     setSelectedSize({
       ...selectedSize,
       [product.productId]: "",
+    });
+  };
+
+  const removeWishlist = (product) => {
+    toggleWishlist({
+      id: product.productId,
+      productId: product.productId,
+      userId: product.userId,
+      name: product.name,
+      price: product.price,
+      category: product.category,
+      group: product.group || [],
     });
   };
 
@@ -56,12 +70,12 @@ function Wishlist() {
           <h2>WISHLIST</h2>
           <p>{wishlist.length} item</p>
 
-        {!loginUser&&(
-          <p>
-            To save your wishlist please <Link to="/login">login</Link> or{" "}
-            <Link to="/signup">sign up</Link>.
-          </p>
-        )}
+          {!loginUser && (
+            <p>
+              To save your wishlist please <Link to="/login">login</Link> or{" "}
+              <Link to="/signup">sign up</Link>.
+            </p>
+          )}
         </div>
 
         <div className="wishlist-product-area">
@@ -73,7 +87,7 @@ function Wishlist() {
                 <button
                   type="button"
                   className="wishlist-heart-button"
-                  onClick={() => toggleWishlist(product)}
+                  onClick={() => removeWishlist(product)}
                 >
                   <FaHeart />
                 </button>

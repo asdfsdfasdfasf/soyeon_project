@@ -23,6 +23,13 @@ function Mypage() {
 
   const handleLogout = () => {
     localStorage.removeItem("loginUser");
+
+    sessionStorage.removeItem("guestCart");
+    sessionStorage.removeItem("guestWishlist");
+
+    window.dispatchEvent(new Event("cartUpdated"));
+    window.dispatchEvent(new Event("wishlistReload"));
+
     alert("로그아웃되었습니다.");
     navigate("/");
   };
@@ -35,25 +42,17 @@ function Mypage() {
       <Header />
 
       <main className="mypage-page">
-        <div className="mypage-box">
-          <h2>MY PAGE</h2>
+        <h2>MY PAGE</h2>
 
-          <p className="mypage-name">
-            {loginUser.firstName} {loginUser.lastName}
-          </p>
+        <p>
+          {loginUser.firstName} {loginUser.lastName}
+        </p>
 
-          <p className="mypage-email">
-            {loginUser.email}
-          </p>
+        <p>{loginUser.email}</p>
 
-          <button
-            type="button"
-            className="logout-button"
-            onClick={handleLogout}
-          >
-            logout
-          </button>
-        </div>
+        <button type="button" onClick={handleLogout}>
+          logout
+        </button>
       </main>
     </div>
   );

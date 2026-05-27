@@ -45,7 +45,10 @@ function WishlistProvider({ children }) {
   const toggleWishlist = async (product) => {
     const loginUser = getLoginUser();
 
-    const productId = product.productId || product.id;
+    const productId =
+      product.fromWishlist
+        ? product.productId
+        : product.id;
 
     if (!loginUser) {
       const guestWishlist = getGuestWishlist();
