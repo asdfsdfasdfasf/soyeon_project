@@ -1,30 +1,41 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiHeart, FiShoppingBag } from "react-icons/fi";
-import { useState } from "react";
+import { FaHeart } from "react-icons/fa";
+import { WishlistContext } from "../context/wishlist-context";
 
 function ProductCard({ product }) {
   const [showSizes, setShowSizes] = useState(false);
+  const { toggleWishlist, isWishlisted } = useContext(WishlistContext);
 
-  const addWishlist = async () => {
-    await fetch("http://localhost:3001/wishlist", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(product),
-    });
-
-    alert("찜목록에 추가되었습니다.");
+  const getLoginUser = () => {
+    return JSON.parse(localStorage.getItem("loginUser"));
   };
 
   const addCart = async (size) => {
+    const loginUser = getLoginUser();
+
+    const cartItem = {
+      id: `cart-${product.id}-${size}-${Date.now()}`,
+      productId: product.id,
+      userId: loginUser ? loginUser.id : null,
+      name: product.name,
+      price: product.price,
+      category: product.category,
+      group: product.group || [],
+      size,
+      quantity: 1,
+    };
+
     await fetch("http://localhost:3001/cart", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...product,
-        size: size,
-        quantity: 1,
-      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItem),
     });
+
+    window.dispatchEvent(new Event("cartUpdated"));
 
     alert(`${size} 사이즈가 장바구니에 추가되었습니다.`);
     setShowSizes(false);
@@ -40,9 +51,9 @@ function ProductCard({ product }) {
         <button
           type="button"
           className="heart-button"
-          onClick={addWishlist}
+          onClick={() => toggleWishlist(product)}
         >
-          <FiHeart />
+          {isWishlisted(product.id) ? <FaHeart /> : <FiHeart />}
         </button>
 
         <button

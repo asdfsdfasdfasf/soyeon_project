@@ -24,8 +24,6 @@ function Mypage() {
   const handleLogout = () => {
     localStorage.removeItem("loginUser");
 
-    sessionStorage.removeItem("guestCart");
-    sessionStorage.removeItem("guestWishlist");
 
     window.dispatchEvent(new Event("cartUpdated"));
     window.dispatchEvent(new Event("wishlistReload"));

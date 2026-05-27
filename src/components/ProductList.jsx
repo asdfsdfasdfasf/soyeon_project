@@ -57,7 +57,6 @@ function ProductList({ filter }) {
           ...guestCart,
           {
             ...cartItem,
-            id: Date.now(),
           },
         ];
       }
