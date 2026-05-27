@@ -1,5 +1,30 @@
 {
-  "wishlist": [],
+  "wishlist": [
+    {
+      "userId": 1,
+      "productId": 1,
+      "name": "outer",
+      "price": "₩00,000",
+      "category": "outers",
+      "group": [
+        "new",
+        "best-sellers"
+      ],
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "productId": 4,
+      "name": "boleros",
+      "price": "₩00,000",
+      "category": "boleros",
+      "group": [
+        "new",
+        "best-sellers"
+      ],
+      "id": 3
+    }
+  ],
   "users": [
     {
       "firstName": "소연",

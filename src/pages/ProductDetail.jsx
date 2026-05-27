@@ -8,11 +8,11 @@ import { useState } from "react";
 function ProductDetail() {
   const { id } = useParams();
 
-  const product = products.find(
-    (item) => item.id === Number(id)
-  );
+  const product = products.find((item) => item.id === Number(id));
 
   const [currentImage, setCurrentImage] = useState(0);
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
 
   const fakeImages = ["FRONT", "SIDE", "BACK"];
 
@@ -26,6 +26,51 @@ function ProductDetail() {
     setCurrentImage((prev) =>
       prev === fakeImages.length - 1 ? 0 : prev + 1
     );
+  };
+
+  const handleAddCart = () => {
+    if (!selectedColor) {
+      alert("색상을 선택해주세요.");
+      return;
+    }
+
+    if (!selectedSize) {
+      alert("사이즈를 선택해주세요.");
+      return;
+    }
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingItem = cart.find(
+      (item) =>
+        item.id === product.id &&
+        item.selectedColor === selectedColor &&
+        item.selectedSize === selectedSize
+    );
+
+    let updatedCart;
+
+    if (existingItem) {
+      updatedCart = cart.map((item) =>
+        item.id === product.id &&
+        item.selectedColor === selectedColor &&
+        item.selectedSize === selectedSize
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+    } else {
+      const newItem = {
+        ...product,
+        selectedColor: selectedColor,
+        selectedSize: selectedSize,
+        quantity: 1,
+      };
+
+      updatedCart = [...cart, newItem];
+    }
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    alert("장바구니에 담겼습니다.");
   };
 
   if (!product) {
@@ -76,22 +121,38 @@ function ProductDetail() {
           <div className="option-box">
             <p className="option-title">COLOR</p>
             <div className="option-buttons">
-              <button>Ivory</button>
-              <button>Pink</button>
-              <button>Black</button>
+              {["Ivory", "Pink", "Black"].map((color) => (
+                <button
+                  key={color}
+                  className={
+                    selectedColor === color ? "selected-option" : ""
+                  }
+                  onClick={() => setSelectedColor(color)}
+                >
+                  {color}
+                </button>
+              ))}
             </div>
           </div>
 
           <div className="option-box">
             <p className="option-title">SIZE</p>
             <div className="option-buttons">
-              <button>S</button>
-              <button>M</button>
-              <button>L</button>
+              {["S", "M", "L"].map((size) => (
+                <button
+                  key={size}
+                  className={selectedSize === size ? "selected-option" : ""}
+                  onClick={() => setSelectedSize(size)}
+                >
+                  {size}
+                </button>
+              ))}
             </div>
           </div>
 
-          <button className="add-cart-btn">add to cart</button>
+          <button className="add-cart-btn" onClick={handleAddCart}>
+            add to cart
+          </button>
         </div>
       </div>
     </div>
