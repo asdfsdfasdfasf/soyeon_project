@@ -18,6 +18,10 @@ function WishlistProvider({ children }) {
     sessionStorage.setItem("guestWishlist", JSON.stringify(data));
   };
 
+  const getProductId = (product) => {
+    return Number(product.productId ?? product.id);
+  };
+
   const loadWishlist = async () => {
     const loginUser = getLoginUser();
 
@@ -44,30 +48,26 @@ function WishlistProvider({ children }) {
 
   const toggleWishlist = async (product) => {
     const loginUser = getLoginUser();
-
-    const productId =
-      product.fromWishlist
-        ? product.productId
-        : product.id;
+    const productId = getProductId(product);
 
     if (!loginUser) {
       const guestWishlist = getGuestWishlist();
 
       const exists = guestWishlist.find(
-        (item) => Number(item.productId) === Number(productId)
+        (item) => Number(item.productId) === productId
       );
 
       let newWishlist;
 
       if (exists) {
         newWishlist = guestWishlist.filter(
-          (item) => Number(item.productId) !== Number(productId)
+          (item) => Number(item.productId) !== productId
         );
       } else {
         newWishlist = [
           ...guestWishlist,
           {
-            productId: productId,
+            productId,
             name: product.name,
             price: product.price,
             category: product.category,
@@ -84,7 +84,7 @@ function WishlistProvider({ children }) {
 
     const exists = wishlist.find(
       (item) =>
-        Number(item.productId) === Number(productId) &&
+        Number(item.productId) === productId &&
         Number(item.userId) === Number(loginUser.id)
     );
 
@@ -94,11 +94,11 @@ function WishlistProvider({ children }) {
       });
 
       setWishlist((prev) =>
-        prev.filter((item) => item.id !== exists.id)
+        prev.filter((item) => Number(item.productId) !== productId)
       );
     } else {
       const newWish = {
-        productId: productId,
+        productId,
         userId: loginUser.id,
         name: product.name,
         price: product.price,
@@ -122,16 +122,17 @@ function WishlistProvider({ children }) {
 
   const isWishlisted = (productId) => {
     const loginUser = getLoginUser();
+    const targetProductId = Number(productId);
 
     if (!loginUser) {
       return wishlist.some(
-        (item) => Number(item.productId) === Number(productId)
+        (item) => Number(item.productId) === targetProductId
       );
     }
 
     return wishlist.some(
       (item) =>
-        Number(item.productId) === Number(productId) &&
+        Number(item.productId) === targetProductId &&
         Number(item.userId) === Number(loginUser.id)
     );
   };

@@ -26,6 +26,7 @@ function ProductList({ filter }) {
     const loginUser = getLoginUser();
 
     const cartItem = {
+      id: `cart-${product.id}-${size}-${Date.now()}`,
       productId: product.id,
       userId: loginUser ? loginUser.id : null,
       name: product.name,

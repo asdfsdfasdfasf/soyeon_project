@@ -11,6 +11,15 @@ function Wishlist() {
 
   const loginUser = JSON.parse(localStorage.getItem("loginUser"));
 
+  const getGuestCart = () => {
+    return JSON.parse(sessionStorage.getItem("guestCart")) || [];
+  };
+
+  const saveGuestCart = (cart) => {
+    sessionStorage.setItem("guestCart", JSON.stringify(cart));
+    window.dispatchEvent(new Event("cartUpdated"));
+  };
+
   const addCart = async (product) => {
     const size = selectedSize[product.productId];
 
@@ -20,8 +29,9 @@ function Wishlist() {
     }
 
     const cartItem = {
+      id: `cart-${product.productId}-${size}-${Date.now()}`,
       productId: product.productId,
-      userId: product.userId || null,
+      userId: loginUser ? loginUser.id : null,
       name: product.name,
       price: product.price,
       category: product.category,
@@ -29,6 +39,46 @@ function Wishlist() {
       size,
       quantity: 1,
     };
+
+    if (!loginUser) {
+      const guestCart = getGuestCart();
+
+      const sameItem = guestCart.find(
+        (item) =>
+          item.productId === product.productId &&
+          item.size === size
+      );
+
+      let newGuestCart;
+
+      if (sameItem) {
+        newGuestCart = guestCart.map((item) =>
+          item.productId === product.productId &&
+          item.size === size
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        newGuestCart = [
+          ...guestCart,
+          {
+            ...cartItem,
+            id: Date.now(),
+          },
+        ];
+      }
+
+      saveGuestCart(newGuestCart);
+
+      alert(`${size} 사이즈가 장바구니에 추가되었습니다.`);
+
+      setSelectedSize({
+        ...selectedSize,
+        [product.productId]: "",
+      });
+
+      return;
+    }
 
     await fetch("http://localhost:3001/cart", {
       method: "POST",
@@ -49,15 +99,7 @@ function Wishlist() {
   };
 
   const removeWishlist = (product) => {
-    toggleWishlist({
-      id: product.productId,
-      productId: product.productId,
-      userId: product.userId,
-      name: product.name,
-      price: product.price,
-      category: product.category,
-      group: product.group || [],
-    });
+    toggleWishlist(product);
   };
 
   return (
