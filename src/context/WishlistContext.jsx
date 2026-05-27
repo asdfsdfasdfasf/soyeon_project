@@ -10,11 +10,19 @@ function WishlistProvider({ children }) {
     return JSON.parse(localStorage.getItem("loginUser"));
   };
 
-  const fetchWishlist = async () => {
+  const getGuestWishlist = () => {
+    return JSON.parse(sessionStorage.getItem("guestWishlist")) || [];
+  };
+
+  const saveGuestWishlist = (data) => {
+    sessionStorage.setItem("guestWishlist", JSON.stringify(data));
+  };
+
+  const loadWishlist = async () => {
     const loginUser = getLoginUser();
 
     if (!loginUser) {
-      setWishlist([]);
+      setWishlist(getGuestWishlist());
       return;
     }
 
@@ -25,14 +33,48 @@ function WishlistProvider({ children }) {
   };
 
   useEffect(() => {
-    fetchWishlist();
+    loadWishlist();
+
+    const handleWishlistReload = () => {
+      loadWishlist();
+    };
+
+    window.addEventListener("wishlistReload", handleWishlistReload);
+
+    return () => {
+      window.removeEventListener("wishlistReload", handleWishlistReload);
+    };
   }, []);
 
   const toggleWishlist = async (product) => {
     const loginUser = getLoginUser();
 
     if (!loginUser) {
-      alert("로그인이 필요합니다.");
+      const guestWishlist = getGuestWishlist();
+
+      const exists = guestWishlist.find(
+        (item) => item.productId === product.id
+      );
+
+      let newWishlist;
+
+      if (exists) {
+        newWishlist = guestWishlist.filter(
+          (item) => item.productId !== product.id
+        );
+      } else {
+        newWishlist = [
+          ...guestWishlist,
+          {
+            ...product,
+            productId: product.id,
+            id: Date.now(),
+          },
+        ];
+      }
+
+      saveGuestWishlist(newWishlist);
+      setWishlist(newWishlist);
       return;
     }
 
@@ -47,39 +89,32 @@ function WishlistProvider({ children }) {
         method: "DELETE",
       });
 
-      setWishlist(
-        wishlist.filter((item) => item.id !== exists.id)
-      );
+      setWishlist(wishlist.filter((item) => item.id !== exists.id));
     } else {
-      const wishlistItem = {
-        ...product,
-        id: `${loginUser.id}-${product.id}`,
+      const newWish = {
         productId: product.id,
         userId: loginUser.id,
+        name: product.name,
+        price: product.price,
+        category: product.category,
+        group: product.group || [],
       };
 
-      await fetch(API_URL, {
+      const response = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(wishlistItem),
+        body: JSON.stringify(newWish),
       });
 
-      setWishlist([...wishlist, wishlistItem]);
+      const savedWish = await response.json();
+      setWishlist([...wishlist, savedWish]);
     }
   };
 
   const isWishlisted = (productId) => {
-    const loginUser = getLoginUser();
-
-    if (!loginUser) return false;
-
-    return wishlist.some(
-      (item) =>
-        item.productId === productId &&
-        item.userId === loginUser.id
-    );
+    return wishlist.some((item) => item.productId === productId);
   };
 
   return (
@@ -88,7 +123,7 @@ function WishlistProvider({ children }) {
         wishlist,
         toggleWishlist,
         isWishlisted,
-        fetchWishlist,
+        loadWishlist,
       }}
     >
       {children}

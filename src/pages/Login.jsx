@@ -41,6 +41,10 @@ function Login() {
 
     localStorage.setItem("loginUser", JSON.stringify(data[0]));
 
+    sessionStorage.removeItem("guestWishlist");
+    window.dispatchEvent(new Event("wishlistReload"));
+    window.dispatchEvent(new Event("cartUpdated"));
+
     alert("로그인되었습니다.");
     navigate("/");
   };
@@ -72,11 +76,7 @@ function Login() {
 
           <p className="forgot">forgot your password?</p>
 
-          <button
-            type="button"
-            className="login-btn"
-            onClick={handleLogin}
-          >
+          <button type="button" className="login-btn" onClick={handleLogin}>
             sign in
           </button>
 
