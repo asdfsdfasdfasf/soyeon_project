@@ -8,11 +8,12 @@ import BrandStory from "./pages/BrandStory";
 import Album from "./pages/Album";
 import Search from "./pages/Search";
 import Signup from "./pages/Signup";
-import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Login from "./pages/Login";
 import Review from "./pages/Review";
 import ProductDetail from "./pages/ProductDetail";
+import Checkout from "./pages/Checkout";
+import Mypage from "./pages/Mypage";
 
 function App() {
   return (
@@ -32,10 +33,12 @@ function App() {
       <Route path="/album" element={<Album />} />
       <Route path="/search" element={<Search />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/checkout" element={<Checkout />} />
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/login" element={<Login />} />
       <Route path="/review" element={<Review />} />
+
+      <Route path="/mypage" element={<Mypage />} />
     </Routes>
   );
 }

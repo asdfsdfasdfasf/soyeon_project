@@ -1,12 +1,13 @@
 {
   "wishlist": [
     {
-      "id": 3,
-      "name": "top",
+      "id": 1,
+      "name": "outer",
       "price": "₩00,000",
-      "category": "tops",
+      "category": "outers",
       "group": [
-        "new"
+        "new",
+        "best-sellers"
       ]
     },
     {
@@ -17,6 +18,106 @@
       "group": [
         "best-sellers"
       ]
+    },
+    {
+      "id": 4,
+      "name": "boleros",
+      "price": "₩00,000",
+      "category": "boleros",
+      "group": [
+        "new",
+        "best-sellers"
+      ]
+    },
+    {
+      "id": "1-2",
+      "name": "tee",
+      "price": "₩00,000",
+      "category": "tees",
+      "group": [
+        "best-sellers"
+      ],
+      "productId": 2,
+      "userId": 1
+    },
+    {
+      "id": "1-1",
+      "name": "outer",
+      "price": "₩00,000",
+      "category": "outers",
+      "group": [
+        "new",
+        "best-sellers"
+      ],
+      "productId": 1,
+      "userId": 1
+    },
+    {
+      "id": "2-11",
+      "name": "bag",
+      "price": "₩00,000",
+      "category": "bags",
+      "group": [
+        "best-sellers"
+      ],
+      "productId": 11,
+      "userId": 2
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "name": "outer",
+      "price": "₩00,000",
+      "category": "outers",
+      "group": [
+        "new",
+        "best-sellers"
+      ],
+      "size": "M",
+      "quantity": 1
+    },
+    {
+      "id": "1-M-1779795285755",
+      "name": "outer",
+      "price": "₩00,000",
+      "category": "outers",
+      "group": [
+        "new",
+        "best-sellers"
+      ],
+      "productId": 1,
+      "size": "M",
+      "quantity": 1
+    },
+    {
+      "id": "2-11-L-1779795437411",
+      "name": "bag",
+      "price": "₩00,000",
+      "category": "bags",
+      "group": [
+        "best-sellers"
+      ],
+      "productId": 11,
+      "userId": 2,
+      "size": "L",
+      "quantity": 1
+    }
+  ],
+  "users": [
+    {
+      "firstName": "소연",
+      "lastName": "황",
+      "email": "hsy150701@naver.com",
+      "password": "hsy150701!!",
+      "id": 1
+    },
+    {
+      "firstName": "호민",
+      "lastName": "천",
+      "email": "homin@naver.com",
+      "password": "homin030202!!",
+      "id": 2
     }
   ]
 }

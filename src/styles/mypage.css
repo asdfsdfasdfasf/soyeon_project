@@ -1,0 +1,37 @@
+.mypage-page {
+  min-height: 100vh;
+  padding-top: 230px;
+  display: flex;
+  justify-content: center;
+  font-family: "Pretendard", sans-serif;
+}
+
+.mypage-box {
+  width: 520px;
+  text-align: center;
+}
+
+.mypage-box h2 {
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.mypage-name {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.mypage-email {
+  color: #777;
+  margin-bottom: 36px;
+}
+
+.logout-button {
+  width: 100%;
+  height: 60px;
+  border: none;
+  background: #f0e7ea;
+  font-size: 17px;
+  cursor: pointer;
+}

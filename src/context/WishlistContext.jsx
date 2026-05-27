@@ -6,45 +6,90 @@ const API_URL = "http://localhost:3001/wishlist";
 function WishlistProvider({ children }) {
   const [wishlist, setWishlist] = useState([]);
 
-  useEffect(() => {
-    const fetchWishlist = async () => {
-      const response = await fetch(API_URL);
-      const data = await response.json();
-      setWishlist(data);
-    };
+  const getLoginUser = () => {
+    return JSON.parse(localStorage.getItem("loginUser"));
+  };
 
+  const fetchWishlist = async () => {
+    const loginUser = getLoginUser();
+
+    if (!loginUser) {
+      setWishlist([]);
+      return;
+    }
+
+    const response = await fetch(`${API_URL}?userId=${loginUser.id}`);
+    const data = await response.json();
+
+    setWishlist(data);
+  };
+
+  useEffect(() => {
     fetchWishlist();
   }, []);
 
   const toggleWishlist = async (product) => {
-    const exists = wishlist.find((item) => item.id === product.id);
+    const loginUser = getLoginUser();
+
+    if (!loginUser) {
+      alert("로그인이 필요합니다.");
+      return;
+    }
+
+    const exists = wishlist.find(
+      (item) =>
+        item.productId === product.id &&
+        item.userId === loginUser.id
+    );
 
     if (exists) {
-      await fetch(`${API_URL}/${product.id}`, {
+      await fetch(`${API_URL}/${exists.id}`, {
         method: "DELETE",
       });
 
-      setWishlist(wishlist.filter((item) => item.id !== product.id));
+      setWishlist(
+        wishlist.filter((item) => item.id !== exists.id)
+      );
     } else {
+      const wishlistItem = {
+        ...product,
+        id: `${loginUser.id}-${product.id}`,
+        productId: product.id,
+        userId: loginUser.id,
+      };
+
       await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(product),
+        body: JSON.stringify(wishlistItem),
       });
 
-      setWishlist([...wishlist, product]);
+      setWishlist([...wishlist, wishlistItem]);
     }
   };
 
-  const isWishlisted = (id) => {
-    return wishlist.some((item) => item.id === id);
+  const isWishlisted = (productId) => {
+    const loginUser = getLoginUser();
+
+    if (!loginUser) return false;
+
+    return wishlist.some(
+      (item) =>
+        item.productId === productId &&
+        item.userId === loginUser.id
+    );
   };
 
   return (
     <WishlistContext.Provider
-      value={{ wishlist, toggleWishlist, isWishlisted }}
+      value={{
+        wishlist,
+        toggleWishlist,
+        isWishlisted,
+        fetchWishlist,
+      }}
     >
       {children}
     </WishlistContext.Provider>
