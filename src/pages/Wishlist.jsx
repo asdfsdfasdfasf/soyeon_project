@@ -9,6 +9,8 @@ function Wishlist() {
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
   const [selectedSize, setSelectedSize] = useState({});
 
+  const loginUser = JSON.parse(localStorage.getItem("loginUser"));
+
   const addCart = async (product) => {
     const size = selectedSize[product.productId];
 
@@ -54,10 +56,12 @@ function Wishlist() {
           <h2>WISHLIST</h2>
           <p>{wishlist.length} item</p>
 
+        {!loginUser&&(
           <p>
             To save your wishlist please <Link to="/login">login</Link> or{" "}
             <Link to="/signup">sign up</Link>.
           </p>
+        )}
         </div>
 
         <div className="wishlist-product-area">
