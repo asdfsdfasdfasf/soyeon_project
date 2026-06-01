@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import products from "../data/products";
 import Header from "../components/Header";
-import "../styles/productDetail.css";
 import TopNotice from "../components/TopNotice";
+import Review from "../components/Review";
+import "../styles/productDetail.css";
 import { useState } from "react";
 
 function ProductDetail() {
@@ -124,9 +125,7 @@ function ProductDetail() {
               {["Ivory", "Pink", "Black"].map((color) => (
                 <button
                   key={color}
-                  className={
-                    selectedColor === color ? "selected-option" : ""
-                  }
+                  className={selectedColor === color ? "selected-option" : ""}
                   onClick={() => setSelectedColor(color)}
                 >
                   {color}
@@ -155,6 +154,8 @@ function ProductDetail() {
           </button>
         </div>
       </div>
+
+      <Review productId={product.id} productName={product.name} />
     </div>
   );
 }

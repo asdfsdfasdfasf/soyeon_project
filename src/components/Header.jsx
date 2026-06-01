@@ -109,7 +109,7 @@ function Header() {
             ALBUM
           </Link>
 
-          <Link to="/village" className="menu-title single-link">
+          <Link to="/brand-story" className="menu-title single-link">
             S2 VILLAGE
           </Link>
         </nav>

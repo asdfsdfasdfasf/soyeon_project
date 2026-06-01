@@ -10,7 +10,7 @@ import Search from "./pages/Search";
 import Signup from "./pages/Signup";
 import Wishlist from "./pages/Wishlist";
 import Login from "./pages/Login";
-import Review from "./pages/Review";
+import ReviewPage from "./pages/ReviewPage";
 import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
 import Mypage from "./pages/Mypage";
@@ -36,7 +36,7 @@ function App() {
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/review" element={<Review />} />
+      <Route path="/review" element={<ReviewPage />} />
 
       <Route path="/mypage" element={<Mypage />} />
     </Routes>

@@ -1,0 +1,40 @@
+.brand-story-page {
+  width: 95%;
+  min-height: 80vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 200px 80px 120px;
+  gap: 100px;
+
+}
+
+.brand-story-image {
+  width: 50%;
+}
+
+.brand-story-image img {
+  width: 100%;
+  display: block;
+}
+
+.brand-story-content {
+  width: 40%;
+
+  text-align: center;
+
+  color: #222;
+  line-height: 2;
+}
+
+.brand-story-content p {
+  font-size: 15px;
+  font-weight: 300;
+  font-family: "Times New Roman", serif;
+
+  margin-bottom: 30px;
+  line-height: 1.7;
+  letter-spacing: 0.8px;
+}

@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import TopNotice from "../components/TopNotice";
+import FixedLogo from "../components/FixedLogo";
+import Footer from "../components/Footer";
 import { WishlistContext } from "../context/wishlist-context";
 import { FaHeart } from "react-icons/fa";
 
@@ -68,7 +70,6 @@ function Wishlist() {
       }
 
       saveGuestCart(newGuestCart);
-
       alert(`${size} 사이즈가 장바구니에 추가되었습니다.`);
 
       setSelectedSize({
@@ -110,7 +111,6 @@ function Wishlist() {
     }
 
     window.dispatchEvent(new Event("cartUpdated"));
-
     alert(`${size} 사이즈가 장바구니에 추가되었습니다.`);
 
     setSelectedSize({
@@ -124,9 +124,10 @@ function Wishlist() {
   };
 
   return (
-    <div>
+    <div className="wishlist-wrapper">
       <TopNotice />
       <Header />
+      <FixedLogo />
 
       <main className="wishlist-page">
         <div className="wishlist-title-area">
@@ -190,6 +191,8 @@ function Wishlist() {
           ))}
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }

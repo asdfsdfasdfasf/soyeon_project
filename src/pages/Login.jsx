@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import TopNotice from "../components/TopNotice";
+import FixedLogo from "../components/FixedLogo";
 import "../styles/main.css";
 import "../styles/login.css";
 
@@ -53,6 +54,7 @@ function Login() {
     <div className="login-page">
       <TopNotice />
       <Header />
+      <FixedLogo />
 
       <div className="login-content">
         <div className="login-container">

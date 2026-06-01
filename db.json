@@ -1,30 +1,5 @@
 {
-  "wishlist": [
-    {
-      "userId": 1,
-      "productId": 1,
-      "name": "outer",
-      "price": "₩00,000",
-      "category": "outers",
-      "group": [
-        "new",
-        "best-sellers"
-      ],
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "productId": 4,
-      "name": "boleros",
-      "price": "₩00,000",
-      "category": "boleros",
-      "group": [
-        "new",
-        "best-sellers"
-      ],
-      "id": 3
-    }
-  ],
+  "wishlist": [],
   "users": [
     {
       "firstName": "소연",
@@ -54,6 +29,21 @@
       ],
       "size": "L",
       "quantity": 1
+    }
+  ],
+  "reviews": [
+    {
+      "productId": 1,
+      "productName": "outer",
+      "userId": 1,
+      "userName": "hsy150701@naver.com",
+      "rating": 5,
+      "title": "오마이갓",
+      "content": "오마이갓",
+      "image": "",
+      "sizeTip": "true to size",
+      "createdAt": "2026-06-01",
+      "id": 1
     }
   ]
 }

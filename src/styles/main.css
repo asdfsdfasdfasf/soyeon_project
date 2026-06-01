@@ -31,7 +31,7 @@ a {
 /* 헤더 */
 .main-header {
   position: fixed;
-  top: 48px;
+  top: 35px;
   left: 0;
   width: 100%;
   height: 120px;
@@ -215,26 +215,16 @@ a {
 
 /* 콘텐츠 밀기 */
 .home-page {
-  padding-top: 148px;
+  padding-top: 0px;
 }
 .home-content {
-  min-height: 500px;
+  min-height: calc(100vh - 168px);
   position: relative;
+  overflow: visible;
 }
 
-.review-banner img {
-  width: 270px;
-  position: absolute;
-  right: 200px;
-  top:-100px;
-  cursor: pointer;
-}
-
-.review-banner img:hover {
-  opacity: 0.75;
-}
 .category-page {
-  padding: 90px 70px;
+  padding: 250px 70px;
 }
 
 .breadcrumb {
@@ -983,8 +973,9 @@ select.checkout-input {
 }
 
 .wishlist-page {
-  padding: 100px 70px 80px;
-  font-family: "Playfair Display", serif;
+  padding: 250px 70px 80px;
+  font-family: "Pretendard", sans-serif;
+  flex:1;
 }
 
 .wishlist-title-area {
@@ -1103,4 +1094,151 @@ select.checkout-input {
   align-items: center;
 
   cursor: pointer;
+}
+
+.home-content {
+  padding-top: 150px;
+  min-height: calc(100vh - 95px);
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 130px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  padding-top: 0px;
+}
+
+.hero-image {
+  position: absolute;
+  left: 50%;
+  top: 90px;
+  transform: translateX(-50%);
+  width: 760px;
+  max-height: 72vh;
+  object-fit: contain;
+}
+
+.floating-key {
+  position: absolute;
+  right: 320px;
+  bottom: 80px;
+  width: 180px;
+}
+
+.review-banner {
+  position: absolute;
+  right: 100px;   /* 더 오른쪽 가고 싶으면 80px */
+  top: 90px;    /* 더 위로 가고 싶으면 -150px */
+  z-index: 50;
+}
+
+.review-banner img {
+  width: 240px;
+  cursor: pointer;
+  display: block;
+}
+
+.review-banner img:hover {
+  opacity: 0.75;
+}
+
+.floating-icecream {
+  position: absolute;
+  left: 200px;
+  top: 70px;
+
+  width: 90px;
+  height: auto;
+}
+
+.fixed-logo-icon {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 60px;
+  z-index: 2000;
+}
+
+.lookbook-section {
+  width: 100%;
+  margin-top: 150px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 30px;
+}
+
+.lookbook-list {
+  display: flex;
+  gap: 60px;
+}
+
+.lookbook-item {
+  flex-shrink: 0;
+}
+
+.lookbook-image {
+  width: 180px;
+  height: 400px;
+
+  background: #e9e9e9;
+  border-radius: 2px;
+}
+
+.lookbook-arrow {
+  background: transparent;
+  border: none;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  color: #222;
+  cursor: pointer;
+
+  padding: 0;
+  line-height: 1;
+}
+
+.lookbook-arrow:hover {
+  opacity: 0.6;
+}
+
+.lookbook-arrow:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.footer-menu {
+  width: 100%;
+  padding: 45px  60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+
+  font-family: "Times New Roman", serif;
+}
+
+.footer-menu a {
+  color: #111;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer-menu a:hover {
+  text-decoration: underline;
+}
+
+.wishlist-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
