@@ -1,6 +1,6 @@
 .signup-page {
   min-height: calc(100vh - 155px);
-  padding-top: 100px;
+  padding-top: 210px;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
@@ -15,12 +15,12 @@
   margin: 0 0 38px;
   font-size: 19px;
   font-weight: 400;
-  font-family: "Playfair Display", serif;
+  font-family: "Pretendard", sans-serif;
 }
 
 .signup-box input {
   width: 100%;
-  height: 58px;
+  height: 55px;
 
   border: 1px solid #eee;
   background: white;
@@ -41,12 +41,12 @@
 
 .signup-box button {
   width: 100%;
-  height: 58px;
+  height: 55px;
 
   margin-top: 26px;
 
   border: none;
-  background: #f0e7ea;
+  background: #f4e7ea;
 
   font-size: 15px;
   font-family: "Pretendard", sans-serif;
@@ -60,5 +60,5 @@
 
   color: #999;
   text-decoration: underline;
-  font-size: 15px;
+  font-size: 13px;
 }

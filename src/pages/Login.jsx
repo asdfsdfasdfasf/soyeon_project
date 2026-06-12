@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import TopNotice from "../components/TopNotice";
 import FixedLogo from "../components/FixedLogo";
+import Footer from "../components/Footer";
 import "../styles/main.css";
 import "../styles/login.css";
 
@@ -43,11 +44,17 @@ function Login() {
     localStorage.setItem("loginUser", JSON.stringify(data[0]));
 
     sessionStorage.removeItem("guestWishlist");
+
     window.dispatchEvent(new Event("wishlistReload"));
     window.dispatchEvent(new Event("cartUpdated"));
 
-    alert("로그인되었습니다.");
     navigate("/");
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
   };
 
   return (
@@ -65,6 +72,7 @@ function Login() {
             name="email"
             value={form.email}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
             placeholder="email"
           />
 
@@ -73,12 +81,19 @@ function Login() {
             name="password"
             value={form.password}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
             placeholder="password"
           />
 
-          <p className="forgot">forgot your password?</p>
+          <p className="forgot" onClick={() => navigate("/reset-password")}>
+            forgot your password?
+          </p>
 
-          <button type="button" className="login-btn" onClick={handleLogin}>
+          <button
+            type="button"
+            className="login-btn"
+            onClick={handleLogin}
+          >
             sign in
           </button>
 
@@ -87,6 +102,7 @@ function Login() {
           </Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

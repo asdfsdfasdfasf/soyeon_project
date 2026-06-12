@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import TopNotice from "../components/TopNotice";
+import Footer from "../components/Footer";
 import ProductList from "../components/ProductList";
 import "../styles/main.css";
 
@@ -28,6 +29,7 @@ function Best() {
         </div>
         <ProductList filter={type || "best-sellers"} />
       </main>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,152 @@
+.returns-page {
+  min-height: calc(100vh - 220px);
+  padding-top: 220px;
+  font-family: Arial, sans-serif;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+}
+
+.returns-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 110px;
+}
+
+.returns-content {
+  flex: 1;
+  width: 70%;
+  margin: 0px auto 0;
+  display: flex;
+  gap: 80px;
+  padding-bottom: 70px;
+}
+
+.returns-menu {
+  width: 160px;
+  flex-shrink: 0;
+  font-size: 14px;
+  line-height: 2.8;
+}
+
+.returns-menu p {
+  margin: 0;
+  cursor: pointer;
+}
+
+.returns-menu .active {
+  color: #d8bfc4;
+}
+
+.returns-menu a:hover {
+  color: #d8bfc4;
+}
+
+.returns-text {
+  width: 760px;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-right: 20px;
+}
+
+.returns-text p {
+  margin-bottom: 24px;
+}
+
+.returns-section {
+  margin-top: 70px;
+}
+
+.returns-section h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.returns-section p {
+  margin-bottom: 4px;
+}
+
+.shipping-text {
+  width: 760px;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-right: 20px;
+}
+
+.shipping-text p {
+  margin-bottom: 2px;
+}
+
+.shipping-section {
+  margin-top: 70px;
+}
+
+.shipping-section-1 {
+  margin-top: 0px;
+}
+
+.shipping-section-1 h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.shipping-section h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.shipping-section p {
+  margin-bottom: 4px;
+}
+
+.faq-text {
+  width: 760px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.faq-category {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 15px;
+}
+
+.faq-category:not(:first-child) {
+  margin-top: 70px;
+}
+
+.faq-item {
+  width: 100%;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  background: none;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+
+}
+
+.faq-answer {
+  background-color: #f2e8e8;
+  padding: 28px 35px;
+  margin: 8px 0 12px;
+}
+
+.faq-answer p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+}

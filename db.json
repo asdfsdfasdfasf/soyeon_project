@@ -6,7 +6,8 @@
       "lastName": "황",
       "email": "hsy150701@naver.com",
       "password": "hsy150701!!",
-      "id": 1
+      "id": 1,
+      "role": "admin"
     },
     {
       "firstName": "호민",
@@ -28,22 +29,560 @@
         "best-sellers"
       ],
       "size": "L",
+      "quantity": 4
+    },
+    {
+      "id": "cart-11-Pink-OS-1780403112616",
+      "name": "bag",
+      "price": "₩00,000",
+      "category": "bags",
+      "group": [
+        "best-sellers"
+      ],
+      "stock": {
+        "Ivory": {
+          "OS": true
+        },
+        "Pink": {
+          "OS": true
+        },
+        "Black": {
+          "OS": true
+        }
+      },
+      "productId": 11,
+      "userId": 1,
+      "color": "Pink",
+      "size": "OS",
+      "quantity": 1
+    },
+    {
+      "id": "cart-2-M-1780404176896",
+      "productId": 2,
+      "userId": 1,
+      "name": "tee",
+      "price": "₩00,000",
+      "category": "tees",
+      "group": [
+        "best-sellers"
+      ],
+      "size": "M",
+      "quantity": 4
+    },
+    {
+      "id": "cart-2-Pink-L-1780404189776",
+      "name": "tee",
+      "price": "₩00,000",
+      "category": "tees",
+      "group": [
+        "best-sellers"
+      ],
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": false,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": false,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": false,
+          "L": true
+        }
+      },
+      "productId": 2,
+      "userId": 1,
+      "color": "Pink",
+      "size": "L",
+      "quantity": 1
+    },
+    {
+      "id": "cart-2-M-1780404377680",
+      "productId": 2,
+      "userId": 1,
+      "name": "tee",
+      "price": "₩00,000",
+      "category": "tees",
+      "group": [
+        "best-sellers"
+      ],
+      "size": "M",
+      "quantity": 1
+    },
+    {
+      "id": "cart-2-M-1780404469176",
+      "productId": 2,
+      "userId": 1,
+      "name": "tee",
+      "price": "₩00,000",
+      "category": "tees",
+      "group": [
+        "best-sellers"
+      ],
+      "size": "M",
+      "quantity": 1
+    },
+    {
+      "id": "cart-2-Pink-S-1780404982068",
+      "name": "tee",
+      "price": "₩00,000",
+      "category": "tees",
+      "group": [
+        "best-sellers"
+      ],
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": false,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": false,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": false,
+          "L": true
+        }
+      },
+      "productId": 2,
+      "userId": 1,
+      "color": "Pink",
+      "size": "S",
+      "quantity": 1
+    },
+    {
+      "id": "cart-4-L-1780405087312",
+      "productId": 4,
+      "userId": 1,
+      "name": "boleros",
+      "price": "₩00,000",
+      "category": "boleros",
+      "group": [
+        "new",
+        "best-sellers"
+      ],
+      "size": "L",
       "quantity": 1
     }
   ],
-  "reviews": [
+  "reviews": [],
+  "contacts": [
     {
-      "productId": 1,
-      "productName": "outer",
-      "userId": 1,
-      "userName": "hsy150701@naver.com",
-      "rating": 5,
-      "title": "오마이갓",
-      "content": "오마이갓",
-      "image": "",
-      "sizeTip": "true to size",
-      "createdAt": "2026-06-01",
+      "firstName": "소연",
+      "lastName": "황",
+      "email": "hsy150701@naver.com",
+      "orderNumber": "123",
+      "message": "작아요",
+      "status": "답변완료",
+      "createdAt": "2026. 6. 2. 오후 6:06:28",
       "id": 1
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "outer",
+      "price": "₩00,000",
+      "category": "outers",
+      "group": [
+        "new",
+        "best-sellers"
+      ],
+      "stock": {
+        "Ivory": {
+          "S": false,
+          "M": false,
+          "L": false
+        },
+        "Pink": {
+          "S": false,
+          "M": false,
+          "L": false
+        },
+        "Black": {
+          "S": false,
+          "M": false,
+          "L": false
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "tee",
+      "price": "₩00,000",
+      "category": "tees",
+      "group": [
+        "best-sellers"
+      ],
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": false,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": false,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": false,
+          "L": true
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "top",
+      "price": "₩00,000",
+      "category": "tops",
+      "group": [
+        "new"
+      ],
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": true,
+          "L": true
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "boleros",
+      "price": "₩00,000",
+      "category": "boleros",
+      "group": [
+        "new",
+        "best-sellers"
+      ],
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": true,
+          "L": true
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "knits",
+      "price": "₩00,000",
+      "category": "knits",
+      "group": [
+        "best-sellers"
+      ],
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": true,
+          "L": true
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "dress",
+      "price": "₩00,000",
+      "category": "dresses",
+      "group": [
+        "new"
+      ],
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": true,
+          "L": true
+        }
+      }
+    },
+    {
+      "id": 7,
+      "name": "pants",
+      "price": "₩00,000",
+      "category": "pants",
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": true,
+          "L": true
+        }
+      }
+    },
+    {
+      "id": 8,
+      "name": "skirt",
+      "price": "₩00,000",
+      "category": "skirts",
+      "group": [
+        "new",
+        "best-sellers"
+      ],
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": true,
+          "L": true
+        }
+      }
+    },
+    {
+      "id": 9,
+      "name": "sets",
+      "price": "₩00,000",
+      "category": "sets",
+      "group": [
+        "best-sellers"
+      ],
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": true,
+          "L": true
+        }
+      }
+    },
+    {
+      "id": 10,
+      "name": "swimwear",
+      "price": "₩00,000",
+      "category": "swimwear",
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": true,
+          "L": true
+        }
+      }
+    },
+    {
+      "id": 11,
+      "name": "bag",
+      "price": "₩00,000",
+      "category": "bags",
+      "group": [
+        "best-sellers"
+      ],
+      "stock": {
+        "Ivory": {
+          "OS": true
+        },
+        "Pink": {
+          "OS": true
+        },
+        "Black": {
+          "OS": true
+        }
+      }
+    },
+    {
+      "id": 12,
+      "name": "shoes",
+      "price": "₩00,000",
+      "category": "shoes",
+      "stock": {
+        "Ivory": {
+          "225": true,
+          "230": true,
+          "235": true,
+          "240": true,
+          "245": true,
+          "250": true,
+          "255": true,
+          "260": true
+        },
+        "Pink": {
+          "225": true,
+          "230": true,
+          "235": true,
+          "240": true,
+          "245": true,
+          "250": true,
+          "255": true,
+          "260": true
+        },
+        "Black": {
+          "225": true,
+          "230": true,
+          "235": true,
+          "240": true,
+          "245": true,
+          "250": true,
+          "255": true,
+          "260": true
+        }
+      }
+    },
+    {
+      "id": 13,
+      "name": "bra",
+      "price": "₩00,000",
+      "category": "bras",
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": true,
+          "L": true
+        }
+      }
+    },
+    {
+      "id": 14,
+      "name": "under",
+      "price": "₩00,000",
+      "category": "underwear",
+      "stock": {
+        "Ivory": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Pink": {
+          "S": true,
+          "M": true,
+          "L": true
+        },
+        "Black": {
+          "S": true,
+          "M": true,
+          "L": true
+        }
+      }
+    },
+    {
+      "id": 15,
+      "name": "jewelry",
+      "price": "₩00,000",
+      "category": "jewelry",
+      "stock": {
+        "Ivory": {
+          "OS": true
+        },
+        "Pink": {
+          "OS": true
+        },
+        "Black": {
+          "OS": true
+        }
+      }
+    },
+    {
+      "id": 16,
+      "name": "socks",
+      "price": "₩00,000",
+      "category": "socks",
+      "group": [
+        "last-chance"
+      ],
+      "stock": {
+        "Ivory": {
+          "OS": true
+        },
+        "Pink": {
+          "OS": true
+        },
+        "Black": {
+          "OS": true
+        }
+      }
     }
   ]
 }

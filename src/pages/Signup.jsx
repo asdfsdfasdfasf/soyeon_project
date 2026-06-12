@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import TopNotice from "../components/TopNotice";
 import FixedLogo from "../components/FixedLogo";
+import Footer from "../components/Footer";
 import "../styles/signup.css";
 
 function Signup() {
@@ -90,6 +91,7 @@ function Signup() {
           </Link>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

@@ -97,20 +97,56 @@ function Review({ productId, productName }) {
     <div className="review-section">
       <h2>reviews</h2>
 
-      <div className="review-summary">
-        <div className="review-score">
-          <span className="summary-stars">
-            {"★".repeat(Math.round(averageRating))}
-            {"☆".repeat(5 - Math.round(averageRating))}
-          </span>
+      <div className="review-summary-area">
+        <div className="review-summary">
+          <div className="review-score">
+            <span className="summary-stars">
+              {"★".repeat(Math.round(averageRating))}
+              {"☆".repeat(5 - Math.round(averageRating))}
+            </span>
 
-          <span>{averageRating.toFixed(2)} out of 5</span>
-          <p>based on {reviews.length} reviews</p>
+            <span>{averageRating.toFixed(2)} out of 5</span>
+            <p>based on {reviews.length} reviews</p>
+          </div>
+
+          <button className="write-review-btn" onClick={handleOpenReview}>
+            {isWriting ? "cancel review" : "write a review"}
+          </button>
         </div>
 
-        <button className="write-review-btn" onClick={handleOpenReview}>
-          {isWriting ? "cancel review" : "write a review"}
-        </button>
+        <div className="review-bottom-info">
+          {reviews.length > 0 && (
+            <div className="review-size-bar summary-size-bar">
+              <p className="size-title">sizing tips:</p>
+
+              <div className="size-bar">
+                <div className="size-fill" style={{ width: "60%" }}></div>
+              </div>
+
+              <div className="size-labels">
+                <span>small</span>
+                <span>large</span>
+              </div>
+            </div>
+          )}
+
+          <div className="review-photo-section">
+            <h3>photos</h3>
+
+            <div className="review-photo-list">
+              {reviews
+                .filter((review) => review.image)
+                .map((review) => (
+                  <img
+                    key={review.id}
+                    src={review.image}
+                    alt="review"
+                    className="review-photo-thumbnail"
+                  />
+                ))}
+            </div>
+          </div>
+        </div>
       </div>
 
       {isWriting && (
@@ -203,23 +239,6 @@ function Review({ productId, productName }) {
           </div>
         </div>
       )}
-
-      <div className="review-photo-section">
-        <h3>photos</h3>
-
-        <div className="review-photo-list">
-          {reviews
-            .filter((review) => review.image)
-            .map((review) => (
-              <img
-                key={review.id}
-                src={review.image}
-                alt="review"
-                className="review-photo-thumbnail"
-              />
-            ))}
-        </div>
-      </div>
 
       <div className="review-list">
         {reviews.length === 0 ? (

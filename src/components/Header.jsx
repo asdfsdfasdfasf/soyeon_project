@@ -8,7 +8,7 @@ import {
   FiShoppingBag,
 } from "react-icons/fi";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import SearchBar from "./SearchBar";
 import CartDrawer from "./CartDrawer";
@@ -16,6 +16,18 @@ import CartDrawer from "./CartDrawer";
 function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenCart = () => {
+      setCartOpen(true);
+    };
+
+    window.addEventListener("openCart", handleOpenCart);
+
+    return () => {
+      window.removeEventListener("openCart", handleOpenCart);
+    };
+  }, []);
 
   const navigate = useNavigate();
 

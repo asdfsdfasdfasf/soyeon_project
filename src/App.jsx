@@ -14,9 +14,20 @@ import ReviewPage from "./pages/ReviewPage";
 import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
 import Mypage from "./pages/Mypage";
+import ResetPassword from "./pages/ResetPassword";
+import Returns from "./pages/Returns";
+import FAQs from "./pages/FAQs";
+import Shipping from "./pages/Shipping";
+import Contact from "./pages/Contact";
+import AdminContacts from "./pages/AdminContacts";
+import AdminProducts from "./pages/AdminProducts";
+import AdminReviews from "./pages/AdminReviews";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
+    <>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<Home />} />
 
@@ -39,7 +50,17 @@ function App() {
       <Route path="/review" element={<ReviewPage />} />
 
       <Route path="/mypage" element={<Mypage />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/returns" element={<Returns />} />
+      <Route path="/faqs" element={<FAQs />} />
+      <Route path="/shipping" element={<Shipping />} />
+
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/admin/contacts" element={<AdminContacts />} />
+      <Route path="/admin/products" element={<AdminProducts />} />
+      <Route path="/admin/reviews" element={<AdminReviews />} />
     </Routes>
+    </>
   );
 }
 

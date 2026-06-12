@@ -9,8 +9,7 @@ function Footer() {
       <Link to="/shop-all">shipping</Link>
       <Link to="/returns">returns</Link>
       <Link to="/faqs">FAQs</Link>
-      <Link to="/privacy">privacy</Link>
-      <Link to="/terms">terms & condition</Link>
+      <Link to="/contact">contact</Link>
     </footer>
   );
 }

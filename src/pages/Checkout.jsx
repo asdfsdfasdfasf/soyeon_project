@@ -20,10 +20,23 @@ function Checkout() {
 
   useEffect(() => {
     const fetchCart = async () => {
-      const response = await fetch("http://localhost:3001/cart");
-      const data = await response.json();
-      setCartItems(data);
-    };
+      const loginUser = JSON.parse(localStorage.getItem("loginUser"));
+
+    // 비로그인 상태면 guestCart 불러오기
+    if (!loginUser) {
+      const guestCart = JSON.parse(sessionStorage.getItem("guestCart")) || [];
+      setCartItems(guestCart);
+      return;
+    }
+
+    // 로그인 상태면 해당 유저 cart만 불러오기
+    const response = await fetch(
+      `http://localhost:3001/cart?userId=${loginUser.id}`
+    );
+
+    const data = await response.json();
+    setCartItems(data);
+  };
 
     fetchCart();
   }, []);

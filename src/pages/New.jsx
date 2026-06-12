@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import ProductList from "../components/ProductList";
 import TopNotice from "../components/TopNotice";
+import Footer from "../components/Footer";
 import "../styles/main.css";
 
 function New() {
@@ -14,6 +15,7 @@ function New() {
         </div>
         <ProductList filter="new"/>
       </main>
+      <Footer />
     </div>
   );
 }

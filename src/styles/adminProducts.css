@@ -1,0 +1,115 @@
+.admin-products-page {
+  padding: 190px 100px 120px;
+  font-family: "Pretendard", sans-serif;
+}
+
+.admin-products-page h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 70px;
+}
+
+.admin-product-list {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.admin-product-card {
+  border: 1px solid #ddd;
+  padding: 34px;
+  margin-bottom: 30px;
+}
+
+.admin-product-title {
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-product-title h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.admin-product-title p {
+  color: #999;
+  margin: 0;
+}
+
+.stock-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.stock-row strong {
+  font-size: 15px;
+}
+
+.stock-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.stock-buttons button {
+  width: 90px;
+  height: 48px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  font-family: "Pretendard", sans-serif;
+}
+
+.stock-buttons button span {
+  display: block;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.stock-on {
+  color: #111;
+}
+
+.stock-off {
+  background-color: #f0e6e8 !important;
+  color: #999;
+  text-decoration: line-through;
+}
+.admin-selling,
+.admin-soldout {
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.admin-selling {
+  background-color: #eee;
+  color: #333;
+}
+
+.admin-soldout {
+  background-color: #f0e6e8;
+  color: #999;
+}
+
+.admin-product-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.admin-product-actions button {
+  width: 120px;
+  height: 38px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+}
+
+.admin-product-actions button:hover {
+  background-color: #f0e6e8;
+}

@@ -1,5 +1,29 @@
 const products = [
-  { id: 1, name: "outer", price: "₩00,000", category: "outers", group: ["new", "best-sellers"] },
+  {
+  id: 1,
+  name: "outer",
+  price: "₩00,000",
+  category: "outers",
+  group: ["new", "best-sellers"],
+  stock: {
+    Ivory: {
+      S: true,
+      M: false,
+      L: true,
+    },
+    Pink: {
+      S: false,
+      M: false,
+      L: false,
+    },
+    Black: {
+      S: true,
+      M: true,
+      L: false,
+    },
+  },
+},
+
   { id: 2, name: "tee", price: "₩00,000", category: "tees", group: ["best-sellers"] },
   { id: 3, name: "top", price: "₩00,000", category: "tops", group: ["new"] },
   { id: 4, name: "boleros", price: "₩00,000", category: "boleros", group: ["new", "best-sellers"] },

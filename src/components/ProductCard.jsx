@@ -4,12 +4,20 @@ import { FiHeart, FiShoppingBag } from "react-icons/fi";
 import { FaHeart } from "react-icons/fa";
 import { WishlistContext } from "../context/wishlist-context";
 
-function ProductCard({ product }) {
+function ProductCard({ product, setCartOpen }) {
   const [showSizes, setShowSizes] = useState(false);
   const { toggleWishlist, isWishlisted } = useContext(WishlistContext);
 
   const getLoginUser = () => {
     return JSON.parse(localStorage.getItem("loginUser"));
+  };
+
+  const openCartDrawer = () => {
+    window.dispatchEvent(new Event("cartUpdated"));
+
+    if (setCartOpen) {
+      setCartOpen(true);
+    }
   };
 
   const addCart = async (size) => {
@@ -31,16 +39,14 @@ function ProductCard({ product }) {
 
       const sameItem = guestCart.find(
         (item) =>
-          Number(item.productId) === Number(product.id) &&
-          item.size === size
+          Number(item.productId) === Number(product.id) && item.size === size
       );
 
       let newGuestCart;
 
       if (sameItem) {
         newGuestCart = guestCart.map((item) =>
-          Number(item.productId) === Number(product.id) &&
-          item.size === size
+          Number(item.productId) === Number(product.id) && item.size === size
             ? { ...item, quantity: Number(item.quantity) + 1 }
             : item
         );
@@ -55,10 +61,8 @@ function ProductCard({ product }) {
       }
 
       sessionStorage.setItem("guestCart", JSON.stringify(newGuestCart));
-      window.dispatchEvent(new Event("cartUpdated"));
-
-      alert(`${size} 사이즈가 장바구니에 추가되었습니다.`);
       setShowSizes(false);
+      openCartDrawer();
       return;
     }
 
@@ -92,10 +96,8 @@ function ProductCard({ product }) {
       });
     }
 
-    window.dispatchEvent(new Event("cartUpdated"));
-
-    alert(`${size} 사이즈가 장바구니에 추가되었습니다.`);
     setShowSizes(false);
+    openCartDrawer();
   };
 
   return (

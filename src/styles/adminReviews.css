@@ -1,0 +1,88 @@
+.admin-reviews-page {
+  padding: 190px 100px 120px;
+  font-family: "Pretendard", sans-serif;
+}
+
+.admin-reviews-page h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 70px;
+}
+
+.admin-review-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.admin-review-card {
+  border: 1px solid #eee;
+  padding: 32px;
+  margin-bottom: 28px;
+}
+
+.admin-review-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.admin-review-product {
+  font-size: 15px;
+  color: #dfc8cc;
+  margin-bottom: 8px;
+}
+
+.admin-review-user {
+  font-size: 14px;
+  color: #777;
+}
+
+.admin-review-delete-btn {
+  width: 90px;
+  height: 34px;
+  border: 1px solid #dfc8cc;
+  background: white;
+  color: #dfc8cc;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.admin-review-delete-btn:hover {
+  background: #dfc8cc;
+  color: white;
+}
+
+.admin-review-stars {
+  color: #dfc8cc;
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.admin-review-card h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.admin-review-content {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.admin-review-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-top: 20px;
+  border-radius: 6px;
+}
+
+.no-admin-review {
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}

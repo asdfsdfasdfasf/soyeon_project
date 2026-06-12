@@ -1,7 +1,7 @@
 import { FiSearch, FiX } from "react-icons/fi";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import products from "../data/products";
-import ProductCard from "../components/ProductCard";
 
 function SearchBar({ open, setOpen }) {
   const [keyword, setKeyword] = useState("");
@@ -41,7 +41,19 @@ function SearchBar({ open, setOpen }) {
           {searchedProducts.length > 0 ? (
             <div className="search-result-grid">
               {searchedProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <Link
+                  key={product.id}
+                  to={`/product/${product.id}`}
+                  className="search-product-card"
+                  onClick={closeSearch}
+                >
+                  <div className="search-product-image"></div>
+
+                  <div className="search-product-info">
+                    <p>{product.name}</p>
+                    <p>{product.price}</p>
+                  </div>
+                </Link>
               ))}
             </div>
           ) : (

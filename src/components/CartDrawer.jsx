@@ -205,6 +205,7 @@ function CartDrawer({ isOpen, onClose }) {
         <button
           type="button"
           className="checkout-button"
+          disabled = {cartItems.length === 0}
           onClick={() => {
             onClose();
             navigate("/checkout");
